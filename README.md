@@ -21,11 +21,13 @@ The algorithm changes the MAC address of your computer. It then initializes the 
 ## TODO
 - [ ] Scrape elite proxies.
 - [ ] Add debug mode for issue handling.
-- [ ] Proxy rotation for IP change.
+- [ ] Confirm proxies work.
+- [x] Proxy rotation for IP change.
 - [ ] Geological location change in relation to IP address.
 - [ ] Refreshing cookies and chache 
 - [ ] Add config file for entering the interface name and browser size.
 - [ ] Server/continent proxy location support
 
 Thank you for checking out this repo! 
+
 If you found this helpful, feel free to star my work and tell me some of the creative applications you came up with. However, be minful of where and how you scrape. Make sure to stay within the confines of the law to not piss people off!
