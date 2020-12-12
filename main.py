@@ -5,12 +5,12 @@ TODO
 3. Change MAC Address (DONE)
 4. Browser fingerprint
 
-Refresh cookies 
-Refresh session
+Refresh cookies (DONE) - though not any, it is still good practice to delete them
+Refresh session (DONE)
 
 """
 
-import time, random
+import time, random, requests
 from sample.proxy1 import Proxy1
 from sample.proxy2 import Proxy2
 from sample.proxy3 import Proxy3
@@ -42,9 +42,31 @@ if __name__ == "__main__":
     proxy1 = Proxy1()
     proxy2 = Proxy2()
     proxy3 = Proxy3()
-    proxy_choices = {'SSL Proxies': proxy1.proxy, 'GitHub elite proxies':proxy2.proxy, 'GimmeProxies': proxy3.proxy}
-    proxy_choice = random.choice(list(proxy_choices.values()))
-    PROXY, country = proxy_choice()
+    proxy_choices = {'SSL Proxies': proxy1.proxy(), 'GitHub elite proxies':proxy2.proxy(), 'GimmeProxies': proxy3.proxy()}
+
+    #Confirm proxy's validity
+    def check_proxy():
+        proxy_found = False
+        counter = 0
+        PROXY, country = '',''
+        while proxy_found:
+            proxy_choice = random.choice(list(proxy_choices.values()))
+            print(proxy_choice)
+            PROXY, country = proxy_choice
+            counter += 1
+            print("\r" + "[+] Looking for valid IP address: " + str(counter), end="")
+            try:
+                r = requests.get('https://pinchofyum.com/', proxies={'https': 'https://{}'.format(PROXY)}, timeout=8)
+                if r.status_code == 200:
+                    print('\n[+] IP Address used as proxy: ' + PROXY)
+                    proxy_not_found = True
+                else:
+                    PROXY, country = proxy_choice()
+            except:
+                PROXY, country = proxy_choice()
+        return PROXY, country
+
+    PROXY, country = check_proxy()
     print('[+] Proxy of choice: ' + str(PROXY))
 
     #Set Chromedriver Options
