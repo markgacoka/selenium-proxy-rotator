@@ -11,7 +11,21 @@ A python wrapper around selenium that makes web automation anonymous through eli
 ## How it works
 The algorithm changes the MAC address of your computer. It then initializes the random user agent and proxy IP which is scraped from 3 different elite proxy sources. A Selenium webdriver session is then started where you can automate your web scraping or surfing anonymously.
 
-## Instructions
+## Usage
+On main.py
+```python
+    #Open url
+    open_url(chromedriver, url)
+    time.sleep(5)
+    #### Add your own code here.
+
+    # Get session
+    print('[+] Session ID: ' + chromedriver.session_id)
+    print('[+] Deleting all cookies...')
+    chromedriver.delete_all_cookies()
+    chromedriver.quit()
+```
+### Instructions
 - If you get an error based on the interface, type `ifconfig` or `ipconfig` on cli and change the value.
 
 ### Chromedriver 
