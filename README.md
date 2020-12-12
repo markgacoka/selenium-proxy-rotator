@@ -19,12 +19,12 @@ The algorithm changes the MAC address of your computer. It then initializes the 
 - Tested on Ubuntu 20.04 (Focal Fossa)
 
 ## TODO
-- [ ] Scrape elite proxies.
+- [x] Scrape elite proxies.
 - [ ] Add debug mode for issue handling.
 - [ ] Confirm proxies work.
 - [x] Proxy rotation for IP change.
-- [ ] Geological location change in relation to IP address.
-- [ ] Refreshing cookies and chache 
+- [x] Geological location change in relation to IP address.
+- [x] Refreshing cookies and chache 
 - [ ] Add config file for entering the interface name and browser size.
 - [ ] Server/continent proxy location support
 
